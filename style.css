@@ -3,6 +3,7 @@
 :root{
     --gold: #C9A24D;
     --gold-light: #E0C06A;
+    --dark-blue: #000918;
     --second-color: #000;
 }
 
@@ -11,6 +12,7 @@
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
+    color: #fff;
     font-family: 'par',sans-serif;
 }
 
@@ -367,14 +369,66 @@ nav .section .join:hover .hero-arrow{
     background-color: var(--gold-light);
     border: 2px solid var(--gold-light);
 }
-.section2{
+.about-section{
     height: 100vh;
     width: 100%;
     background-color: #000918;
     position: relative;
+    padding: 0 5vw;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5vw;
 
 }
+.about-section .about-left{
+    width: 50%;
+}
+.about-section .about-right{
+    width: 50%;
+    text-align: end;
+
+}
+.about-section .about-img{
+    height: 800px;
+    width: 600px;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+.about-section .about-img img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+
+.about-section .about-right h1{
+    font-size: 3vw;
+    text-transform: uppercase;
+
+}
+.about-right h5{
+    text-transform: uppercase;
+    font-size: 1rem;
+}
+
+.about-right p{
+    font-size: 1.2vw;
+    text-align: end;
+
+}
+
+
+
+
+
+
+
+
+
+
+
 
 .section3{
     height: 100vh;
