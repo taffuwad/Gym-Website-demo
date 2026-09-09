@@ -79,12 +79,12 @@ nav .logo img{
 }
 nav .section{
     display: flex;
-    gap: 1.5rem;
+    gap: 2vw;
 }
 nav .section a{
     color: var(--primary-color);
     font-size: 1vw;
-    font-weight: 600;
+    font-weight: 100;
 
 }
 
@@ -169,3 +169,81 @@ nav .section a{
    color: var(--primary-color) ;
    border: 2px solid  var(--primary-color) ;
 }
+
+.section2{
+    height: 100vh;
+    width: 100%;
+    background-color: #fff;
+    position: relative;
+
+    display: flex;
+    padding-top: -4vw;
+
+}
+.section2 .s2-left{
+    width: 50%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 3vw;
+
+    position: relative;
+
+
+}
+.s2-left h2{
+    text-transform: uppercase;
+    font-family: 'main';
+    font-size: 2.5vw;
+}
+.section2 .s2-left .more{
+    position: absolute;
+    left: 50%;
+    bottom: 10%;
+    transform: translate(-50%,-50%);
+
+    padding: 1rem 3rem;
+    font-size: 1.4vw;
+    text-transform: uppercase;
+    border-radius: 2rem;
+    border: none;
+    cursor: pointer;
+}
+.s2-arrow{
+    transition: 0.4s ease;
+}
+.section2 .s2-left .more:hover .s2-arrow{
+    padding-left: 1vw;
+}
+.section2 .s2-right{
+
+    width: 50%;
+    text-transform: uppercase;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 2vw;
+
+}
+.s2-right h1{
+    font-family: 'main';
+    font-size: 2vw;
+}
+.s2-right .yt-video{
+     height: 350px;
+     width: 80%;
+     overflow: hidden;
+     border-radius: 2rem;
+}
+.s2-right .yt-video iframe{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
