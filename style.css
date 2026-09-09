@@ -268,6 +268,7 @@ nav .section .join{
     text-transform: uppercase;
     cursor: pointer;
     position: relative;
+    color: #000;
 }
 nav .section .join i{
     position: absolute;
@@ -276,6 +277,8 @@ nav .section .join i{
     transform: translate(-50%,-50%);
     transition: 0.3s ease;
     opacity: 0;
+    color: #000;
+
 
 }
 nav .section .join:hover .hero-arrow{
@@ -370,53 +373,193 @@ nav .section .join:hover .hero-arrow{
     border: 2px solid var(--gold-light);
 }
 .about-section{
-    height: 100vh;
-    width: 100%;
-    background-color: #000918;
+    --about-surface: #071426;
     position: relative;
-    padding: 0 5vw;
+    isolation: isolate;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(20rem, .9fr);
+    align-items: center;
+    gap: clamp(3rem, 8vw, 10rem);
+    min-height: 100svh;
+    padding: clamp(5rem, 10vw, 9rem) clamp(1.5rem, 7vw, 8rem);
+    overflow: hidden;
+    background: var(--dark-blue);
+}
 
+.about-section::before{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: min(54vw, 52rem);
+    aspect-ratio: 1;
+    top: -28%;
+    right: -18%;
+    border: 1px solid rgb(201 162 77 / 24%);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4.5rem rgb(201 162 77 / 4%), 0 0 0 9rem rgb(201 162 77 / 3%);
+}
+
+.about-section .about-left{
+    position: relative;
+    width: min(100%, 42rem);
+}
+
+.about-section .about-img{
+    position: relative;
+    height: clamp(28rem, 48vw, 46rem);
+    overflow: hidden;
+    border-radius: 1.25rem;
+    background: var(--about-surface);
+}
+
+.about-section .about-img::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgb(0 9 24 / 58%) 100%);
+    pointer-events: none;
+}
+
+.about-section .about-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform .6s ease;
+}
+
+.about-section .about-left:hover .about-img img{
+    transform: scale(1.04);
+}
+
+.about-experience{
+    position: absolute;
+    right: clamp(-1rem, -3vw, -3rem);
+    bottom: clamp(1.25rem, 4vw, 3.5rem);
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 5vw;
+    gap: .8rem;
+    padding: 1.05rem 1.25rem;
+    border-left: 3px solid var(--gold);
+    background: var(--gold);
+    color: var(--second-color);
+    box-shadow: 0 .8rem 2rem rgb(0 0 0 / 28%);
+}
 
+.about-experience strong,
+.about-experience strong span,
+.about-experience > span{
+    color: var(--second-color);
 }
-.about-section .about-left{
-    width: 50%;
+
+.about-experience strong{
+    font-family: main, sans-serif;
+    font-size: clamp(2.25rem, 4vw, 3.75rem);
+    line-height: .8;
 }
+
+.about-experience strong span{
+    font-family: par, sans-serif;
+    font-size: .55em;
+}
+
+.about-experience > span{
+    font-size: .7rem;
+    font-weight: 700;
+    line-height: 1.15;
+    text-transform: uppercase;
+}
+
 .about-section .about-right{
-    width: 50%;
-    text-align: end;
-
-}
-.about-section .about-img{
-    height: 800px;
-    width: 600px;
-    border-radius: 1rem;
-    overflow: hidden;
-}
-.about-section .about-img img{
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
+    max-width: 38rem;
+    justify-self: end;
 }
 
-
-.about-section .about-right h1{
-    font-size: 3vw;
+.about-kicker{
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    margin-bottom: 1.4rem;
+    color: var(--gold);
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .16em;
     text-transform: uppercase;
-
 }
-.about-right h5{
+
+.about-kicker::before{
+    width: 2.6rem;
+    height: 1px;
+    background: currentColor;
+    content: "";
+}
+
+.about-section .about-right h2{
+    max-width: 10ch;
+    margin-bottom: 1.6rem;
+    color: #fff;
+    font-family: main, sans-serif;
+    font-size: clamp(3.25rem, 6vw, 6.2rem);
+    font-weight: 800;
+    line-height: .88;
+    letter-spacing: 0.2rem;
     text-transform: uppercase;
-    font-size: 1rem;
 }
 
-.about-right p{
-    font-size: 1.2vw;
-    text-align: end;
+.about-section .about-right h2 em{
+    color: var(--gold);
+    font-family: inherit;
+    font-style: normal;
+}
 
+.about-copy,
+.about-title > p:not(.about-kicker){
+    max-width: 48ch;
+    margin-top: .8rem;
+    color: rgb(255 255 255 / 70%);
+    font-size: clamp(.94rem, 1.15vw, 1.08rem);
+    font-weight: 400;
+    line-height: 1.7;
+}
+
+.about-copy br,
+.about-title > p:not(.about-kicker) br{
+    display: none;
+}
+
+.about-cta{
+    display: inline-flex;
+    align-items: center;
+    gap: 1.6rem;
+    margin-top: 2rem;
+    padding: .95rem 1.15rem .95rem 1.4rem;
+    border: 1px solid var(--gold);
+    background: transparent;
+    color: var(--gold);
+    font-family: inherit;
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color .25s ease, color .25s ease, transform .25s ease;
+}
+
+.about-cta span{
+    color: inherit;
+    font-size: 1.2rem;
+    line-height: .8;
+    transition: transform .25s ease;
+}
+
+.about-cta:hover{
+    background: var(--gold);
+    color: var(--second-color);
+    transform: translateY(-3px);
+}
+
+.about-cta:hover span{
+    transform: translate(3px, -3px);
 }
 
 
@@ -579,4 +722,67 @@ nav .section .join{
 
 /* 375px — Small phone */
 @media (max-width: 375px) {
+}
+
+/* About section: tablet and phone layout */
+@media (max-width: 900px) {
+    .about-section{
+        grid-template-columns: 1fr;
+        gap: 4.5rem;
+        min-height: auto;
+        padding-block: 6rem;
+    }
+
+    .about-section .about-left,
+    .about-section .about-right{
+        width: min(100%, 42rem);
+        justify-self: center;
+    }
+
+    .about-section .about-right{
+        max-width: 42rem;
+    }
+
+    .about-section .about-img{
+        height: min(112vw, 42rem);
+    }
+
+    .about-section::before{
+        width: 42rem;
+        top: 32%;
+        right: -55%;
+    }
+}
+
+@media (max-width: 600px) {
+    .about-section{
+        gap: 3.5rem;
+        padding: 5rem 1.25rem;
+    }
+
+    .about-section .about-img{
+        height: min(118vw, 32rem);
+        border-radius: .85rem;
+    }
+
+    .about-experience{
+        right: 0;
+        bottom: -1.25rem;
+        padding: .85rem 1rem;
+    }
+
+    .about-section .about-right h2{
+        font-size: clamp(3rem, 15vw, 4.6rem);
+    }
+
+    .about-copy,
+    .about-title > p:not(.about-kicker){
+        font-size: .94rem;
+        line-height: 1.65;
+    }
+
+    .about-cta{
+        width: 100%;
+        justify-content: space-between;
+    }
 }
