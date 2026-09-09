@@ -44,6 +44,89 @@ main{
     position: relative;
 }
 
+/* ----mobile nav---------------------------------------------------------------------------------- */
+.mobile-nav{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+
+
+}
+.mobile-nav .ms-logo{
+    height: 4vw;
+    width: 9vw;
+    margin: 0.8vw 3vw;
+}
+.mobile-nav .ms-logo img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.mobile-nav .ms-menu{
+    padding: 0 2vw;
+    background-color: var(--gold);
+    height: 4.3vw;
+    width: 16vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform: rotate(180deg);
+    gap: 0.3rem;
+    position: relative;
+    cursor: pointer;
+    
+
+}
+.mobile-nav .ms-menu .line1{
+    width: 85%;
+    height: 2px;
+    background: #000;
+    border-radius: 4rem;
+    z-index: 2;
+
+
+}
+.mobile-nav .ms-menu .line2{
+    width: 50%;
+    height: 3px;
+    background: #000;
+    border-radius: 4rem;
+    z-index: 2;
+
+    
+}
+.mobile-nav .ms-menu::before{
+    content: '';
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: var(--gold-light);
+    position: absolute;
+    transform: scaleY(0);
+    transition: 0.3s ease;
+    transform-origin: bottom;
+}
+
+.mobile-nav .ms-menu:hover::before{
+    transform: scaleY(1);
+
+}
+
+
+
+
+
+
+
+
 nav{
     padding: 0.2vw 2vw 0.2vw 3vw;
     background: rgba(0, 0, 0, 0.1);
@@ -83,12 +166,98 @@ nav .section{
     align-items: center;
     gap: 2vw;
 }
-nav .section a{
+
+nav .nav-link{
+    display: block;
     color: #f7f7f7;
     font-size: 1rem;
     font-weight: 100;
-
+    height: 1rem;
+    line-height: 1rem;
+    overflow: hidden;
 }
+nav .nav-link:hover .letter {
+    transform: translateY(-100%);
+}
+
+.nav-link .block:last-child{
+    color: #fff;
+}
+.nav-link .letter{
+    display: inline-block;
+    transition: transform 0.6s ease;
+}
+
+.letter:nth-child(1){
+    transition-delay: 0s;
+}
+.letter:nth-child(2){
+    transition-delay: 0.03s;
+}
+.letter:nth-child(3){
+    transition-delay: 0.06s;
+}
+.letter:nth-child(4){
+    transition-delay: 0.09s;
+}
+.letter:nth-child(5){
+    transition-delay: 0.12s;
+}
+.letter:nth-child(6){
+    transition-delay: 0.15s;
+}
+.letter:nth-child(7){
+    transition-delay: 0.18s;
+}
+.letter:nth-child(8){
+    transition-delay: 0.21s;
+}
+.letter:nth-child(9){
+    transition-delay: 0.24s;
+}
+.letter:nth-child(10){
+    transition-delay: 0.27s;
+}
+.letter:nth-child(11){
+    transition-delay: 0.30s;
+}
+.letter:nth-child(12){
+    transition-delay: 0.33s;
+}
+.letter:nth-child(13){
+    transition-delay: 0.36s;
+}
+.letter:nth-child(14){
+    transition-delay: 0.39s;
+}
+.letter:nth-child(15){
+    transition-delay: 0.42s;
+}
+.letter:nth-child(16){
+    transition-delay: 0.45s;
+}
+.letter:nth-child(17){
+    transition-delay: 0.48s;
+}
+.letter:nth-child(18){
+    transition-delay: 0.51s;
+}
+.letter:nth-child(19){
+    transition-delay: 0.54s;
+}
+.letter:nth-child(20){
+    transition-delay: 0.57s;
+}
+.letter:nth-child(21){
+    transition-delay: 0.60s;
+}
+
+
+
+
+
+
+
 nav .section .join{
     padding: 0.8rem 2.5rem;
     background-color: var(--gold);
@@ -135,7 +304,6 @@ nav .section .join:hover .hero-arrow{
 .hero-section .hero-context{
     text-align: center;
     text-transform: uppercase;
-    z-index: 999999;
     
 
     display: flex;
@@ -152,6 +320,7 @@ nav .section .join:hover .hero-arrow{
     font-family: 'main', sans-serif;
     font-weight: normal;
     font-size: 18vw;
+    letter-spacing: 1.2vw;
 }
 
 .hero-context h4{
@@ -195,85 +364,16 @@ nav .section .join:hover .hero-arrow{
 
 }
 .hero-context .hero-btns .member:hover{
-    background: none;
+    background-color: var(--gold-light);
     border: 2px solid var(--gold-light);
-    color: var(--gold-light);
 }
 .section2{
     height: 100vh;
     width: 100%;
-    background-color: #fff;
-    position: relative;
-
-    display: flex;
-    padding-top: -4vw;
-
-}
-.section2 .s2-left{
-    width: 50%;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    gap: 3vw;
-
+    background-color: #000918;
     position: relative;
 
 
-}
-.s2-left h2{
-    text-transform: uppercase;
-    font-family: 'main';
-    font-size: 2.5vw;
-}
-.section2 .s2-left .more{
-    position: absolute;
-    left: 50%;
-    bottom: 10%;
-    transform: translate(-50%,-50%);
-
-    padding: 1rem 3rem;
-    font-size: 1.4vw;
-    text-transform: uppercase;
-    border-radius: 2rem;
-    border: none;
-    cursor: pointer;
-}
-.s2-arrow{
-    transition: 0.4s ease;
-}
-.section2 .s2-left .more:hover .s2-arrow{
-    padding-left: 1vw;
-}
-.section2 .s2-right{
-
-    width: 50%;
-    text-transform: uppercase;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    gap: 2vw;
-
-}
-.s2-right h1{
-    font-family: 'main';
-    font-size: 2vw;
-}
-.s2-right .yt-video{
-     height: 350px;
-     width: 80%;
-     overflow: hidden;
-     border-radius: 2rem;
-}
-.s2-right .yt-video iframe{
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
 }
 
 .section3{
@@ -282,3 +382,147 @@ nav .section .join:hover .hero-arrow{
     background-color: #222;
 }
 
+
+/* responsiveness---------------------------------------------------------------------------------------- */
+@media (min-width: 1024px){
+    .mobile-nav{
+        display: none;
+    }
+}
+
+@media (max-width: 1536px) {
+}
+
+/* 1280px — Desktop / Laptop */
+@media (max-width: 1280px) {
+nav .section a{
+    font-size: 1.2vw;
+
+}
+nav .section .join{
+    padding: 0.8vw 2.5vw;
+    font-size: 1vw;
+    
+}
+.hero-section .hero-context{
+    margin-top: 2vw;
+    line-height: 16vw;
+}
+.hero-context .hero-btns button{
+    padding: 2vw 5vw;
+    font-size: 2vw;
+}
+
+.hero-context .wc{
+    font-size: 14vw;
+}
+
+.hero-context .hero-name{
+    font-size: 27vw;
+}
+
+.hero-context h4{
+
+    font-size: 1vw;
+    margin-top: -4vw;
+}
+
+}
+
+/* 1024px — Small laptop / Tablet landscape */
+@media (max-width: 1024px) {
+
+    nav{
+        display: none;
+    }
+}
+
+/* 768px — Tablet */
+@media (max-width: 768px) {
+    .mobile-nav .ms-logo{
+    height: 5vw;
+    width: 11vw;
+    margin: 0.8vw 3vw;
+}
+.mobile-nav .ms-logo img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.mobile-nav .ms-menu{
+    height: 4.5vw;
+    width: 18vw;
+}
+.mobile-nav .ms-menu .line1{
+    height: 2px;
+}
+.mobile-nav .ms-menu .line2{
+    height: 2px;
+}
+
+.hero-section .hero-context{
+    margin-top: -5vw;
+    line-height: 22vw;
+}
+.hero-context .hero-btns button{
+    padding: 2vw 5vw;
+    font-size: 2vw;
+}
+
+.hero-context .wc{
+    font-size: 20vw;
+}
+
+.hero-context .hero-name{
+    font-size: 42vw;
+}
+
+.hero-context h4{
+
+    font-size: 1.5vw;
+    margin-top: -3vw;
+}
+.hero-context .hero-btns button{
+    padding: 2vw 5vw;
+    font-size: 4vw;
+}
+
+
+
+}
+
+/* 640px — Large phone */
+@media (max-width: 640px) {
+}
+
+/* 480px — Phone */
+@media (max-width: 480px) {
+
+    .hero-section .hero-context{
+    margin-top: -15vw;
+    line-height: 28vw;
+}
+
+.hero-context .wc{
+    font-size: 28vw;
+}
+
+.hero-context .hero-name{
+    font-size: 52vw;
+}
+
+.hero-context h4{
+
+    font-size: 2vw;
+    margin-top: -3vw;
+}
+.hero-context .hero-btns button{
+    padding: 2vw 5vw;
+    font-size: 4vw;
+}
+}
+
+/* 375px — Small phone */
+@media (max-width: 375px) {
+}
