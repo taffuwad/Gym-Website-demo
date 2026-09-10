@@ -1,5 +1,32 @@
 const navlinks = document.querySelectorAll('.nav-link');
 
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let lenis;
+
+function initLenis() {
+    // Native scrolling is substantially smoother here than a second
+    // requestAnimationFrame-driven scroll engine layered over video and GSAP.
+    lenis = null;
+}
+
+function refreshScrollTriggersAfterImagesLoad() {
+    const main = document.querySelector('main');
+    if (!main) return;
+
+    const refresh = () => {
+        main.classList.add('media-ready');
+        if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+    };
+
+    // A single layout measurement after load avoids recalculating every
+    // ScrollTrigger once for each gallery image.
+    if (document.readyState === 'complete') {
+        refresh();
+    } else {
+        window.addEventListener('load', refresh, { once: true });
+    }
+}
+
     navlinks.forEach((navlink)=>{
         let innerText = navlink.innerText;
         navlink.innerHTML = '';
@@ -109,7 +136,7 @@ function initLocationSection() {
                     <img class="loc-card__img" 
                          src="${loc.image}" 
                          alt="PEAKEAS ${loc.name} gym interior" 
-                         loading="lazy" 
+                         loading="eager"
                          decoding="async">
                 </div>
                 <div class="loc-card__overlay" aria-hidden="true"></div>
@@ -154,6 +181,7 @@ function initLocationSection() {
         modal.classList.add('is-open');
         modal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
+        if (lenis) lenis.stop();
 
         if (modalClose) {
             modalClose.focus();
@@ -165,6 +193,7 @@ function initLocationSection() {
         modal.classList.remove('is-open');
         modal.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
+        if (lenis) lenis.start();
 
         if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
             lastFocusedElement.focus();
@@ -270,7 +299,8 @@ function initLocationSection() {
             scrollTrigger: {
                 trigger: locSection,
                 start: 'top 75%',
-                toggleActions: 'play none none none'
+                toggleActions: 'play none none none',
+                once: true
             }
         });
 
@@ -303,83 +333,189 @@ function initLocationSection() {
             ease: 'power3.out'
         }, 0.45);
 
-        // Cards staggered reveal with clip-path
+        // One trigger for the entire gallery is far cheaper than four
+        // triggers per card (reveal, mask, content, and scroll parallax).
         const cardElements = grid.querySelectorAll('.loc-card');
-        cardElements.forEach((card, i) => {
-            const imgWrap = card.querySelector('.loc-card__img-wrap');
-            const content = card.querySelector('.loc-card__content');
-
-            // ScrollTrigger for each card row
-            gsap.fromTo(card, {
+        if (cardElements.length) {
+            gsap.from(cardElements, {
                 opacity: 0,
-                y: 40
-            }, {
-                opacity: 1,
-                y: 0,
-                duration: 0.8,
+                y: 32,
+                duration: 0.65,
+                stagger: 0.1,
                 ease: 'power3.out',
                 scrollTrigger: {
-                    trigger: card,
-                    start: 'top 88%',
-                    toggleActions: 'play none none none'
+                    trigger: grid,
+                    start: 'top 82%',
+                    toggleActions: 'play none none none',
+                    once: true
                 }
             });
+        }
+    }
+}
 
-            if (imgWrap) {
-                gsap.fromTo(imgWrap, {
-                    clipPath: 'inset(100% 0 0 0)'
-                }, {
-                    clipPath: 'inset(0% 0 0 0)',
-                    duration: 1.15,
-                    ease: 'power3.inOut',
-                    scrollTrigger: {
-                        trigger: card,
-                        start: 'top 88%',
-                        toggleActions: 'play none none none'
-                    }
-                });
+function initGlobalScrollAnimations() {
+    if (prefersReducedMotion || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const aboutSection = document.querySelector('.about-section');
+    if (aboutSection) {
+        const aboutTimeline = gsap.timeline({
+            scrollTrigger: {
+                trigger: aboutSection,
+                start: 'top 72%',
+                toggleActions: 'play none none none',
+                once: true
             }
+        });
 
-            if (content) {
-                gsap.fromTo(content, {
-                    opacity: 0,
-                    y: 20
-                }, {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.7,
-                    delay: 0.25,
-                    ease: 'power3.out',
-                    scrollTrigger: {
-                        trigger: card,
-                        start: 'top 88%',
-                        toggleActions: 'play none none none'
-                    }
-                });
+        aboutTimeline
+            .from('.about-img', { clipPath: 'inset(0 0 100% 0)', duration: 1, ease: 'power3.inOut' })
+            .from('.about-experience', { opacity: 0, y: 28, duration: 0.65, ease: 'power3.out' }, '-=0.35')
+            .from('.about-kicker, .about-right h2, .about-right .about-title > p:not(.about-kicker), .about-cta', {
+                opacity: 0,
+                y: 34,
+                duration: 0.7,
+                stagger: 0.12,
+                ease: 'power3.out'
+            }, '-=0.75');
+    }
+
+    const overviewSection = document.querySelector('.gym-over-view');
+    if (overviewSection) {
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: overviewSection,
+                start: 'top 72%',
+                toggleActions: 'play none none none',
+                once: true
             }
+        })
+            .from('.overview-kicker, .overview-heading h2, .overview-heading > p', {
+                opacity: 0,
+                y: 32,
+                duration: 0.7,
+                stagger: 0.1,
+                ease: 'power3.out'
+            })
+            .from('.overview-gallery', { opacity: 0, y: 54, duration: 0.9, ease: 'power3.out' }, '-=0.25');
+    }
 
-            // Subtle parallax on card image
-            const img = card.querySelector('.loc-card__img');
-            if (img) {
-                gsap.to(img, {
-                    yPercent: -8,
-                    ease: 'none',
-                    scrollTrigger: {
-                        trigger: card,
-                        start: 'top bottom',
-                        end: 'bottom top',
-                        scrub: 1
-                    }
-                });
+    const contactSection = document.querySelector('.gym-contact');
+    if (contactSection) {
+        gsap.from('.contact-wrapper, .contact-form-wrapper', {
+            opacity: 0,
+            y: 44,
+            duration: 0.85,
+            stagger: 0.16,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: contactSection,
+                start: 'top 78%',
+                toggleActions: 'play none none none',
+                once: true
             }
         });
     }
 }
 
-// Initialize on DOM load
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initLocationSection);
-} else {
-    initLocationSection();
+function initHeroVideoPerformance() {
+    const heroVideo = document.querySelector('.main-hero-video');
+    if (!heroVideo || !('IntersectionObserver' in window)) return;
+
+    // Do not keep decoding the large background video after it has left view.
+    const observer = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+            heroVideo.play().catch(() => {});
+        } else {
+            heroVideo.pause();
+        }
+    }, { threshold: 0.02 });
+
+    observer.observe(heroVideo);
 }
 
+function initSite() {
+    initLenis();
+    initLocationSection();
+    initGlobalScrollAnimations();
+    initHeroVideoPerformance();
+    refreshScrollTriggersAfterImagesLoad();
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSite, { once: true });
+} else {
+    initSite();
+}
+
+// Gym loader: keeps the first visit polished while assets finish loading.
+(() => {
+    const loader = document.getElementById('gymLoader');
+    const percentage = document.getElementById('gymLoaderPercent');
+    if (!loader) return;
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const startedAt = performance.now();
+    let completed = false;
+
+    const setProgress = (value) => {
+        const progress = Math.max(0, Math.min(100, Math.round(value)));
+        loader.style.setProperty('--loader-progress', `${progress}%`);
+        if (percentage) percentage.textContent = `${String(progress).padStart(2, '0')}%`;
+    };
+
+    const dismiss = () => {
+        if (completed) return;
+        completed = true;
+        setProgress(100);
+        const wait = reducedMotion ? 80 : Math.max(0, 1250 - (performance.now() - startedAt));
+        window.setTimeout(() => {
+            loader.classList.add('is-hidden');
+            document.body.classList.remove('gym-loading');
+            window.setTimeout(() => loader.remove(), 600);
+        }, wait);
+    };
+
+    const waitForImages = () => {
+        const images = [...document.images];
+        const total = images.length;
+        let ready = 0;
+
+        const imageReady = () => {
+            ready += 1;
+            setProgress((ready / Math.max(total, 1)) * 100);
+            if (ready === total) dismiss();
+        };
+
+        if (!total) {
+            dismiss();
+            return;
+        }
+
+        images.forEach((image) => {
+            // complete also covers a failed request, so one broken image
+            // cannot leave the visitor stuck on the loading screen.
+            if (image.complete) {
+                imageReady();
+            } else {
+                image.addEventListener('load', imageReady, { once: true });
+                image.addEventListener('error', imageReady, { once: true });
+            }
+        });
+    };
+
+    setProgress(0);
+    // initSite's DOMContentLoaded handler renders the location cards first;
+    // this handler then waits for every image already on the page.
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', waitForImages, { once: true });
+    } else {
+        waitForImages();
+    }
+})();
+
+
+
+// hero section animation--------------------------------------------------------------------

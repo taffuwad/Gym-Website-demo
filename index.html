@@ -14,7 +14,33 @@
 />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 </head>
-<body>
+<body class="gym-loading">
+    <!-- Gym-themed page loader -->
+    <div class="gym-loader" id="gymLoader" role="status" aria-live="polite" aria-label="Preparing your Peakeas training experience">
+        <div class="gym-loader__grid" aria-hidden="true"></div>
+        <div class="gym-loader__glow" aria-hidden="true"></div>
+        <div class="gym-loader__rings" aria-hidden="true"><span></span><span></span><span></span></div>
+
+        <div class="gym-loader__equipment" aria-hidden="true">
+            <div class="gym-loader__plate gym-loader__plate--left"><span>45</span></div>
+            <div class="gym-loader__dumbbell">
+                <span class="gym-loader__weight"></span>
+                <span class="gym-loader__collar"></span>
+                <span class="gym-loader__grip"></span>
+                <span class="gym-loader__collar"></span>
+                <span class="gym-loader__weight"></span>
+            </div>
+            <div class="gym-loader__plate gym-loader__plate--right"><span>45</span></div>
+        </div>
+
+        <div class="gym-loader__content">
+            <p class="gym-loader__eyebrow">PEAKEAS PERFORMANCE CLUB</p>
+            <h1>BUILDING<br><em>STRENGTH</em></h1>
+            <p class="gym-loader__message">Preparing your training experience</p>
+            <div class="gym-loader__progress" aria-hidden="true"><span></span></div>
+            <div class="gym-loader__footer"><span id="gymLoaderPercent">00%</span><span>TRAIN · RECOVER · REPEAT</span></div>
+        </div>
+    </div>
     <main>
         <div class="mobile-nav">
             <div class="ms-logo">
@@ -41,7 +67,7 @@
         </nav>
 
         <div class="hero-section">
-            <video class="main-hero-video" src="Components/all-videos/gym-bg-video.mp4" muted autoplay loop ></video>
+            <video class="main-hero-video" src="Components/all-videos/gym-bg-video.mp4" muted autoplay loop playsinline preload="metadata"></video>
             <div class="hero-context">
             <h1 class="wc" >Welcome to</h1>
             <h1 class="hero-name">Peakeas</h1>
