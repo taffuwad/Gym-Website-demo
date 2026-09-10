@@ -17,3 +17,26 @@ const navlinks = document.querySelectorAll('.nav-link');
         navlink.appendChild(textContainer);
     navlink.appendChild(textContainer.cloneNode(true));
 });
+
+const overviewThumbs = new Swiper('.overview-thumbs-slider', {
+    spaceBetween: 12,
+    slidesPerView: 4,
+    freeMode: true,
+    watchSlidesProgress: true,
+    breakpoints: {
+        640: { slidesPerView: 5 },
+        900: { slidesPerView: 6 }
+    }
+});
+
+new Swiper('.overview-main-slider', {
+    loop: true,
+    speed: 650,
+    navigation: {
+        nextEl: '.overview-slider-next',
+        prevEl: '.overview-slider-prev'
+    },
+    thumbs: {
+        swiper: overviewThumbs
+    }
+});
