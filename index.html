@@ -183,7 +183,149 @@
         </div>
 
         <div class="gym-contact">
-            
+            <div class="contact-container">
+                <!-- Left: Contact Info -->
+                <div class="contact-wrapper">
+                    <div class="contact-header">
+                        <h2 class="contact-title">Get In Touch</h2>
+                        <p class="contact-subtitle">Visit us or reach out to join PEAKEAS today</p>
+                    </div>
+
+                    <div class="contact-grid">
+                        <!-- Address Card -->
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="ri-map-pin-2-line" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="contact-card-title">Address</h3>
+                            <p class="contact-card-text">
+                                123 Fitness Avenue<br>
+                                Suite 200<br>
+                                Los Angeles, CA 90001
+                            </p>
+                            <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="contact-link">
+                                View on Map <i class="ri-external-link-line" aria-hidden="true"></i>
+                            </a>
+                        </div>
+
+                        <!-- Phone Card -->
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="ri-phone-line" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="contact-card-title">Phone</h3>
+                            <a href="tel:+12125551234" class="contact-card-link">
+                                +1 (212) 555-1234
+                            </a>
+                            <p class="contact-card-subtext">Available 24/7</p>
+                        </div>
+
+                        <!-- Email Card -->
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="ri-mail-line" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="contact-card-title">Email</h3>
+                            <a href="mailto:info@peakeas-fitness.com" class="contact-card-link">
+                                info@peakeas-fitness.com
+                            </a>
+                            <p class="contact-card-subtext">Response within 24 hours</p>
+                        </div>
+
+                        <!-- Hours Card -->
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="ri-time-line" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="contact-card-title">Hours</h3>
+                            <div class="contact-card-text">
+                                <p><strong>Mon - Fri:</strong> 6:00 AM - 10:00 PM</p>
+                                <p><strong>Sat - Sun:</strong> 8:00 AM - 8:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Contact Form -->
+                <div class="contact-form-wrapper">
+                    <h3 class="form-title">Send us a Message</h3>
+                    <form class="contact-form" id="contactForm" novalidate>
+                        <!-- Name Field -->
+                        <div class="form-group">
+                            <label for="contactName" class="form-label">Full Name <span class="form-required">*</span></label>
+                            <input 
+                                type="text" 
+                                id="contactName" 
+                                name="name" 
+                                class="form-input"
+                                placeholder="Your name"
+                                required
+                            >
+                            <span class="form-error" id="contactName-error"></span>
+                        </div>
+
+                        <!-- Email Field -->
+                        <div class="form-group">
+                            <label for="contactEmail" class="form-label">Email <span class="form-required">*</span></label>
+                            <input 
+                                type="email" 
+                                id="contactEmail" 
+                                name="email" 
+                                class="form-input"
+                                placeholder="your@email.com"
+                                required
+                            >
+                            <span class="form-error" id="contactEmail-error"></span>
+                        </div>
+
+                        <!-- Phone Field -->
+                        <div class="form-group">
+                            <label for="contactPhone" class="form-label">Phone</label>
+                            <input 
+                                type="tel" 
+                                id="contactPhone" 
+                                name="phone" 
+                                class="form-input"
+                                placeholder="+1 (555) 000-0000"
+                            >
+                        </div>
+
+                        <!-- Subject Field -->
+                        <div class="form-group">
+                            <label for="contactSubject" class="form-label">Subject <span class="form-required">*</span></label>
+                            <select id="contactSubject" name="subject" class="form-input form-select" required>
+                                <option value="">Select a subject</option>
+                                <option value="membership">Membership Inquiry</option>
+                                <option value="classes">Classes & Training</option>
+                                <option value="event">Event Booking</option>
+                                <option value="partnership">Partnership</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <span class="form-error" id="contactSubject-error"></span>
+                        </div>
+
+                        <!-- Message Field -->
+                        <div class="form-group">
+                            <label for="contactMessage" class="form-label">Message <span class="form-required">*</span></label>
+                            <textarea 
+                                id="contactMessage" 
+                                name="message" 
+                                class="form-input form-textarea"
+                                placeholder="Tell us what's on your mind..."
+                                rows="5"
+                                required
+                            ></textarea>
+                            <span class="form-error" id="contactMessage-error"></span>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="form-submit">
+                            <span class="submit-spinner" aria-hidden="true"></span>
+                            <span class="submit-text">Send Message</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
     </main>
 
@@ -192,5 +334,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
+    <script src="contact-form.js"></script>
 </body>
 </html>

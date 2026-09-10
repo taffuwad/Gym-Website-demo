@@ -585,7 +585,7 @@ nav .section .join:hover .hero-arrow{
     position: relative;
     padding: clamp(5rem, 9vw, 9rem) clamp(1.5rem, 7vw, 8rem);
     overflow: hidden;
-    background: var(--black);
+    background: var(--dark-blue);
 }
 
 .overview-heading{
@@ -695,7 +695,7 @@ nav .section .join:hover .hero-arrow{
     font-size: clamp(2rem, 4vw, 4.25rem);
     font-weight: 800;
     line-height: .9;
-    letter-spacing: -.025em;
+    letter-spacing: .03em;
     text-transform: uppercase;
 }
 
@@ -781,7 +781,7 @@ nav .section .join:hover .hero-arrow{
     position: relative;
     width: 100%;
     padding: clamp(5rem, 7vw, 7rem) clamp(1.5rem, 5.5vw, 6.5rem);
-    background-color: var(--loc-black);
+    background: var(--dark-blue);
     overflow: hidden;
 }
 
@@ -1306,6 +1306,496 @@ nav .section .join:hover .hero-arrow{
     }
 }
 
+/* ============================================================
+   GYM CONTACT SECTION
+   ============================================================ */
+.gym-contact {
+    padding: 80px 24px;
+    background: linear-gradient(135deg, rgba(18, 22, 25, 0.95) 0%, rgba(24, 36, 43, 0.95) 100%);
+    border-top: 1px solid rgba(201, 162, 77, 0.1);
+}
+
+.contact-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.contact-wrapper {
+    animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+}
+
+.contact-header {
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.contact-title {
+    font-family: 'Bebas Neue', Impact, sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #F4F1E8;
+    margin: 0 0 12px;
+}
+
+.contact-subtitle {
+    font-size: 15px;
+    color: #A7AAAC;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+}
+
+.contact-card {
+    background: rgba(8, 10, 11, 0.5);
+    border: 1px solid rgba(201, 162, 77, 0.15);
+    border-radius: 12px;
+    padding: 24px;
+    transition: all 300ms ease;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+    text-align: left;
+}
+
+.contact-card:hover {
+    border-color: rgba(201, 162, 77, 0.4);
+    background: rgba(8, 10, 11, 0.7);
+    transform: translateX(8px);
+    box-shadow: 0 20px 50px -30px rgba(201, 162, 77, 0.4);
+}
+
+.contact-icon {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(201, 162, 77, 0.15) 0%, rgba(201, 162, 77, 0.05) 100%);
+    border-radius: 10px;
+    font-size: 24px;
+    color: #C9A24D;
+    transition: all 300ms ease;
+}
+
+.contact-card:hover .contact-icon {
+    background: linear-gradient(135deg, rgba(201, 162, 77, 0.25) 0%, rgba(201, 162, 77, 0.15) 100%);
+    transform: scale(1.1);
+}
+
+.contact-card-title {
+    font-family: 'Bebas Neue', Impact, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #F4F1E8;
+    margin: 0 0 8px;
+}
+
+.contact-card-text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #A7AAAC;
+    margin: 0;
+}
+
+.contact-card-text p {
+    margin: 0 0 6px;
+}
+
+.contact-card-text p:last-child {
+    margin-bottom: 0;
+}
+
+.contact-card-text strong {
+    color: #C9A24D;
+    font-weight: 600;
+}
+
+.contact-card-link {
+    color: #C9A24D;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 300ms ease;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 2px;
+    display: inline-block;
+}
+
+.contact-card-link:hover {
+    color: #E0C06A;
+    border-bottom-color: #E0C06A;
+}
+
+.contact-card-subtext {
+    font-size: 12px;
+    color: #7A8A8E;
+    margin: 6px 0 0;
+    font-style: italic;
+}
+
+.contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #C9A24D;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 6px;
+    transition: all 300ms ease;
+}
+
+.contact-link:hover {
+    color: #E0C06A;
+    gap: 10px;
+}
+
+/* ============================================================
+   CONTACT FORM
+   ============================================================ */
+.contact-form-wrapper {
+    background: rgba(8, 10, 11, 0.5);
+    border: 1px solid rgba(201, 162, 77, 0.15);
+    border-radius: 16px;
+    padding: 40px;
+    animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+}
+
+.form-title {
+    font-family: 'Bebas Neue', Impact, sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #F4F1E8;
+    margin: 0 0 32px;
+    text-align: left;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #A7AAAC;
+    margin-bottom: 8px;
+}
+
+.form-required {
+    color: #C9A24D;
+}
+
+.form-input,
+.form-select {
+    padding: 12px 16px;
+    border: 1px solid rgba(244, 241, 232, 0.15);
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.03);
+    color: #F4F1E8;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 15px;
+    transition: all 300ms ease;
+}
+
+.form-input::placeholder {
+    color: #7A8A8E;
+}
+
+.form-input:hover,
+.form-select:hover {
+    border-color: rgba(201, 162, 77, 0.3);
+    background-color: rgba(201, 162, 77, 0.04);
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-input:focus-visible,
+.form-select:focus-visible {
+    outline: none;
+    border-color: #C9A24D;
+    background-color: rgba(201, 162, 77, 0.08);
+    box-shadow: 0 0 0 3px rgba(201, 162, 77, 0.1);
+}
+
+.form-select {
+    appearance: none;
+    -webkit-appearance: none;
+    padding-right: 36px;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23C9A24D' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+}
+
+.form-select option {
+    background-color: #121619;
+    color: #F4F1E8;
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 120px;
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.5;
+}
+
+.form-error {
+    font-size: 12px;
+    color: #F2C0BA;
+    margin-top: 4px;
+    display: none;
+}
+
+.form-group.has-error .form-input,
+.form-group.has-error .form-select {
+    border-color: #7A1717;
+    background-color: rgba(122, 23, 23, 0.12);
+}
+
+.form-group.has-error .form-error {
+    display: block;
+}
+
+.form-submit {
+    padding: 14px 32px;
+    border: 0;
+    border-radius: 8px;
+    background: #C9A24D;
+    color: #080A0B;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 300ms ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 8px;
+    min-height: 48px;
+}
+
+.form-submit:hover:not(:disabled) {
+    background: #E0C06A;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px -12px rgba(201, 162, 77, 0.6);
+}
+
+.form-submit:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.form-submit:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(201, 162, 77, 0.25);
+}
+
+.form-submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.submit-spinner {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid rgba(8, 10, 11, 0.3);
+    border-top-color: #080A0B;
+    animation: spin 0.7s linear infinite;
+    display: none;
+}
+
+.form-submit.is-loading .submit-spinner {
+    display: block;
+}
+
+.form-submit.is-loading .submit-text {
+    opacity: 0.7;
+}
+
+/* ============================================================
+   RESPONSIVE: TABLET
+   ============================================================ */
+@media (max-width: 1024px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .contact-form-wrapper {
+        padding: 32px;
+    }
+
+    .form-title {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .gym-contact {
+        padding: 60px 16px;
+    }
+
+    .contact-header {
+        text-align: center;
+        margin-bottom: 32px;
+    }
+
+    .contact-title {
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+    }
+
+    .contact-grid {
+        gap: 16px;
+    }
+
+    .contact-card {
+        padding: 20px;
+    }
+
+    .contact-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+
+    .contact-card-title {
+        font-size: 13px;
+    }
+
+    .form-title {
+        font-size: 18px;
+    }
+
+    .contact-form-wrapper {
+        padding: 24px;
+    }
+}
+
+/* ============================================================
+   RESPONSIVE: MOBILE
+   ============================================================ */
+@media (max-width: 480px) {
+    .gym-contact {
+        padding: 40px 12px;
+    }
+
+    .contact-container {
+        gap: 24px;
+    }
+
+    .contact-header {
+        margin-bottom: 24px;
+    }
+
+    .contact-title {
+        font-size: clamp(1.6rem, 3.5vw, 2rem);
+    }
+
+    .contact-grid {
+        gap: 12px;
+    }
+
+    .contact-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 12px;
+        padding: 16px;
+    }
+
+    .contact-card-text {
+        font-size: 13px;
+    }
+
+    .contact-form-wrapper {
+        padding: 20px;
+    }
+
+    .form-title {
+        font-size: 16px;
+        margin-bottom: 24px;
+    }
+
+    .contact-form {
+        gap: 16px;
+    }
+
+    .form-submit {
+        font-size: 13px;
+    }
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+}
+
+@keyframes rise {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 .section3{
     height: 100vh;
