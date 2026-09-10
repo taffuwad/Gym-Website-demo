@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>PEAKEAS | Premium Fitness Club</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link
   href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
@@ -31,7 +34,7 @@
                 <a href="" class="nav-link">About</a>
                 <a href="" class="nav-link">Memberships</a>
                 <a href="" class="nav-link">Classes</a>
-                <a href="" class="nav-link">Location & Gallery</a>
+                <a href="#locations" class="nav-link">Location & Gallery</a>
                 <a href="" class="nav-link">FAQs</a>
                 <button class="join">Join now <i class="ri-arrow-right-long-line hero-arrow"></i></button>
             </div>
@@ -123,11 +126,70 @@
                 </div>
             </div>
         </section>
-        
+        <!-- LOCATION & GALLERY SECTION -->
+        <section class="location location-section" id="locations" aria-labelledby="loc-main-heading">
+            <div class="loc-section-number" aria-hidden="true">03 / LOCATIONS</div>
+            
+            <header class="loc-header">
+                <p class="loc-kicker">PEAKEAS LOCATIONS</p>
+                <h2 class="loc-heading" id="loc-main-heading">
+                    <span class="loc-heading__line">FIND YOUR</span>
+                    <span class="loc-heading__line">PEAKEAS</span>
+                </h2>
+                <p class="loc-desc">Six spaces. One standard. Find the PEAKEAS location that fits your training.</p>
+            </header>
+
+            <div class="loc-grid" id="loc-grid" role="region" aria-label="PEAKEAS Locations Gallery">
+                <!-- Dynamically populated from JS data structure -->
+            </div>
+        </section>
+
+        <!-- LOCATION DETAIL PANEL / MODAL -->
+        <div class="loc-modal" id="loc-modal" role="dialog" aria-modal="true" aria-labelledby="modal-loc-name" aria-hidden="true">
+            <div class="loc-modal__backdrop" id="loc-modal-backdrop"></div>
+            <div class="loc-modal__panel" role="document">
+                <button class="loc-modal__close" id="loc-modal-close" type="button" aria-label="Close location details">
+                    <i class="ri-close-line" aria-hidden="true"></i>
+                </button>
+                <div class="loc-modal__img-wrap">
+                    <img class="loc-modal__img" id="modal-loc-img" src="Components/home-image/gym1.jpg" alt="PEAKEAS gym interior">
+                </div>
+                <div class="loc-modal__body">
+                    <span class="loc-card__index" id="modal-loc-index">01</span>
+                    <h3 class="loc-modal__name" id="modal-loc-name">CANOGA PARK</h3>
+                    <p class="loc-modal__desc" id="modal-loc-desc"></p>
+                    <p class="loc-modal__address" id="modal-loc-address">[LOCATION ADDRESS]</p>
+                    <div class="loc-modal__actions">
+                        <button type="button" class="loc-modal__btn loc-modal__btn--gold" id="modal-loc-view">
+                            <span>View Location</span>
+                            <i class="ri-arrow-right-line" aria-hidden="true"></i>
+                        </button>
+                        <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="loc-modal__btn" id="modal-loc-directions">
+                            <span>Get Directions</span>
+                            <i class="ri-direction-line" aria-hidden="true"></i>
+                        </a>
+                        <button type="button" class="loc-modal__btn" id="modal-loc-join">
+                            <span>Join Peakeas</span>
+                            <i class="ri-vip-crown-line" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Custom Desktop Hover Cursor -->
+        <div class="loc-cursor" id="loc-cursor" aria-hidden="true">
+            <span>EXPLORE</span>
+        </div>
+
+        <div class="gym-contact">
+            
+        </div>
     </main>
 
 
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
