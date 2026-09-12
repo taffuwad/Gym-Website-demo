@@ -18,3 +18,37 @@ const navlinks = document.querySelectorAll('.nav-link');
         navlink.appendChild(textContainer);
     navlink.appendChild(textContainer.cloneNode(true));
 });
+
+// Social Icons - Active State Management
+const socialIcons = document.querySelectorAll('.social > div');
+
+socialIcons.forEach((icon) => {
+    icon.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Remove active class from all icons
+        socialIcons.forEach(el => el.classList.remove('active'));
+        
+        // Add active class to clicked icon
+        this.classList.add('active');
+    });
+});
+
+// Optional: Add smooth redirect to social media links
+const socialLinks = {
+    fb: 'https://facebook.com',
+    insta: 'https://instagram.com',
+    wa: 'https://wa.me/'
+};
+
+document.querySelector('.fb').addEventListener('click', function() {
+    // Uncomment to redirect: window.open(socialLinks.fb, '_blank');
+});
+
+document.querySelector('.insta').addEventListener('click', function() {
+    // Uncomment to redirect: window.open(socialLinks.insta, '_blank');
+});
+
+document.querySelector('.wa').addEventListener('click', function() {
+    // Uncomment to redirect: window.open(socialLinks.wa, '_blank');
+});

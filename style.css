@@ -128,111 +128,123 @@ nav .nav-link:hover .letter {
 }
 
 
-
-
-
-
-
-
-/* From Uiverse.io by PriyanshuGupta28 */
-ul {
-  list-style: none;
-}
-
-.social-icons {
+/* Social Icons Styling */
+.social {
   display: flex;
-  justify-content: center;
+  gap: 1.2vw;
   align-items: center;
 }
 
-.social-icons .social-icon {
-  margin: 0 10px;
+.social > div {
   position: relative;
-}
-
-.social-icons .social-icon .social-tooltip {
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #fff;
-  padding: 6px 10px;
-  border-radius: 5px;
-  opacity: 0;
-  visibility: hidden;
-  font-size: 10px;
-  transition: all 0.3s ease;
-}
-
-.social-icons .social-icon:hover .social-tooltip {
-  opacity: 1;
-  visibility: visible;
-  top: -30px;
-}
-
-.social-icons .social-icon a {
-  position: relative;
-  overflow: hidden;
+  width: 2.5rem;
+  height: 2.5rem;
   display: flex;
-  justify-content: center;
   align-items: center;
-  width: 35px;
-  height: 35px;
+  justify-content: center;
+  cursor: pointer;
   border-radius: 50%;
-  color: #4d4d4d;
-  background-color:transparent;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease;
+  /* background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2); */
 }
 
-.social-icons .social-icon a:hover {
-  box-shadow: 3px 2px 45px 0px rgb(0 0 0 / 12%);
-}
-
-.social-icons .social-icon a svg {
+.social > div i {
+  font-size: 1.3rem;
+  color: #fff;
+  transition: all 0.3s ease;
   position: relative;
-  z-index: 1;
-  width: 25px;
-  height: 25px;
+  z-index: 2;
+  user-select: none;
 }
 
-.social-icons .social-icon a:hover {
-  color: white;
+/* Facebook Hover Effect */
+.social .fb:hover {
+  background-color: #1877F2;
+  border-color: #1877F2;
+  transform: scale(1.15) translateY(-3px);
+  box-shadow: 0 8px 20px rgba(24, 119, 242, 0.4);
 }
 
-.social-icons .social-icon a .social-filled {
-  position: absolute;
-  top: auto;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 0;
-  background-color: #000;
-  transition: all 0.3s ease-in-out;
+.social .fb:hover i {
+  color: #fff;
+  transform: rotate(12deg);
 }
 
-.social-icons .social-icon a:hover .social-filled {
-  height: 100%;
+/* Facebook Active State */
+.social .fb.active {
+  background-color: #1877F2;
+  border-color: #1877F2;
+  box-shadow: 0 0 25px rgba(24, 119, 242, 0.6), inset 0 0 15px rgba(24, 119, 242, 0.3);
 }
 
-.social-icons .social-icon a[data-social="spotify"] .social-filled,
-.social-icons .social-icon a[data-social="spotify"] ~ .social-tooltip {
-  background-color: #1db954;
+.social .fb.active i {
+  animation: pulse 0.6s ease;
 }
 
-.social-icons .social-icon a[data-social="pinterest"] .social-filled,
-.social-icons .social-icon a[data-social="pinterest"] ~ .social-tooltip {
-  background-color: #bd081c;
+/* Instagram Hover Effect */
+.social .insta:hover {
+  background: linear-gradient(135deg, #FF5C5C, #FF2E7E, #9934D0, #5B3FDC);
+  border-color: #FF5C5C;
+  transform: scale(1.15) translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 62, 126, 0.4);
 }
 
-.social-icons .social-icon a[data-social="dribbble"] .social-filled,
-.social-icons .social-icon a[data-social="dribbble"] ~ .social-tooltip {
-  background-color: #ea4c89;
+.social .insta:hover i {
+  color: #fff;
+  transform: rotate(-12deg);
 }
 
-.social-icons .social-icon a[data-social="telegram"] .social-filled,
-.social-icons .social-icon a[data-social="telegram"] ~ .social-tooltip {
-  background-color: #0088cc;
+/* Instagram Active State */
+.social .insta.active {
+  background: linear-gradient(135deg, #FF5C5C, #FF2E7E, #9934D0, #5B3FDC);
+  border-color: #FF2E7E;
+  box-shadow: 0 0 25px rgba(255, 62, 126, 0.6), inset 0 0 15px rgba(255, 62, 126, 0.3);
 }
+
+.social .insta.active i {
+  animation: pulse 0.6s ease;
+}
+
+/* WhatsApp Hover Effect */
+.social .wa:hover {
+  background-color: #25D366;
+  border-color: #25D366;
+  transform: scale(1.15) translateY(-3px);
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+}
+
+.social .wa:hover i {
+  color: #fff;
+  transform: rotate(12deg);
+}
+
+/* WhatsApp Active State */
+.social .wa.active {
+  background-color: #25D366;
+  border-color: #25D366;
+  box-shadow: 0 0 25px rgba(37, 211, 102, 0.6), inset 0 0 15px rgba(37, 211, 102, 0.3);
+}
+
+.social .wa.active i {
+  animation: pulse 0.6s ease;
+}
+
+/* Pulse animation for active state */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+
 
 
 
@@ -291,7 +303,9 @@ ul {
     font-size: 1.2vw;
 }
 
-
+.hero-content .hero-right .hero-btn{
+  margin-bottom: 3vw;
+}
 .hero-content-btn {
   text-align: center;
   transition: 0.3s ease-in-out;
@@ -468,3 +482,51 @@ ul {
     translate: 0 -1px;
   }
 }
+
+
+/* ---------------------Responsive--------------------------------------------- */
+
+@media (max-width: 1440px) {
+  .hero-content-btn{
+    font-size: 1.5vw;
+  }
+}
+
+/* Desktop / laptop */
+@media (max-width: 1280px) {
+  .hero-content-btn{
+    font-size: 1.8vw;
+  }
+}
+
+/* Small laptop */
+@media (max-width: 1024px) {
+  nav .section .nav-link{
+    font-size: 1.5vw;
+  }
+  .social-icons .social-icon a{
+    height: 2.4vw;
+    width: 2.4vw;
+  }
+}
+
+/* Tablet */
+@media (max-width: 768px) {}
+
+/* Large mobile */
+@media (max-width: 640px) {}
+
+/* Mobile */
+@media (max-width: 480px) {}
+
+/* Small mobile */
+@media (max-width: 375px) {}
+
+
+
+
+
+
+
+
+
