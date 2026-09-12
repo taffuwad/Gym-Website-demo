@@ -40,6 +40,84 @@ main{
   position: relative;
 }
 
+
+/* ----mobile nav---------------------------------------------------------------------------------- */
+.mobile-nav{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    position: fixed;
+    top: -1px;
+    left: 0;
+    z-index: 9999;
+
+
+}
+.mobile-nav .ms-logo{
+    height: 7vw;
+    width: 18vw;
+    margin: 1.4vw 3vw;
+}
+.mobile-nav .ms-logo img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.mobile-nav .ms-menu{
+    padding: 1vw 2vw;
+    background-color: #000;
+    height: 4.3vw;
+    width: 16vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform: rotate(180deg);
+    gap: 0.3rem;
+    position: relative;
+    cursor: pointer;
+    
+
+}
+.mobile-nav .ms-menu .line1{
+    width: 85%;
+    height: 2px;
+    background: var(--red-color);
+    border-radius: 4rem;
+    z-index: 2;
+
+
+}
+.mobile-nav .ms-menu .line2{
+    width: 50%;
+    height: 2px;
+    background: var(--red-color);
+
+    border-radius: 4rem;
+    z-index: 2;
+
+    
+}
+.mobile-nav .ms-menu::before{
+    content: '';
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: #222;
+    position: absolute;
+    transform: scaleY(0);
+    transition: 0.3s ease;
+    transform-origin: bottom;
+}
+
+.mobile-nav .ms-menu:hover::before{
+    transform: scaleY(1);
+
+}
+
 /* navbar---------------------------------------------------------------------------- */
 
 nav{
@@ -483,8 +561,18 @@ nav .nav-link:hover .letter {
   }
 }
 
+/* --about----------------------------------------------------------------------------------------------------------------------- */
+
+
+
 
 /* ---------------------Responsive--------------------------------------------- */
+
+@media (min-width: 1024px) {
+  .mobile-nav{
+    display: none;
+  }
+}
 
 @media (max-width: 1440px) {
   .hero-content-btn{
@@ -494,6 +582,9 @@ nav .nav-link:hover .letter {
 
 /* Desktop / laptop */
 @media (max-width: 1280px) {
+  nav{
+    padding: 1vw 4vw;
+  }
   .hero-content-btn{
     font-size: 1.8vw;
   }
@@ -501,26 +592,130 @@ nav .nav-link:hover .letter {
 
 /* Small laptop */
 @media (max-width: 1024px) {
-  nav .section .nav-link{
+  nav{
+    display: none;
+  }
+  /* nav .section .nav-link{
     font-size: 1.5vw;
   }
   .social-icons .social-icon a{
     height: 2.4vw;
     width: 2.4vw;
+  } */
+  
+  /* Home section adjustments */
+  .hero-content {
+    padding: 9vw 4vw;
+  }
+  .hero-content .hero-left h1 {
+    font-size: 4.3vw;
+    line-height: 4.3vw;
+    margin-bottom: 1.5vw;
+  }
+  .hero-content .hero-left p {
+    font-size: 1.5vw;
+  }
+  .hero-content-btn {
+    font-size: 1.2rem;
+    padding: 0.8em;
   }
 }
 
 /* Tablet */
-@media (max-width: 768px) {}
+@media (max-width: 768px) {
+  nav{
+    display: none;
+  }
+  /* Home section for tablets */
+  
+  
+  .hero-content {
+    height: 100vh;
+    padding: 22rem 0rem 0 2.5rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    /* background: #000; */
+    gap: 2rem;
+  }
+  .hero-content .hero-left h1 {
+    font-size: 2.5rem;
+    line-height: 2.8rem;
+    margin-bottom: 1rem;
+  }
+  .hero-content .hero-left p {
+    font-size: 1rem;
+  }
+  .hero-content .hero-right {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+  }
+  .hero-content .hero-right .hero-btn {
+    margin-bottom: 0;
+    margin-left: 8vw;
+  }
+  .hero-content-btn {
+    font-size: 1rem;
+    padding: 0.8em;
+  }
+}
 
 /* Large mobile */
-@media (max-width: 640px) {}
+@media (max-width: 640px) {
+  .mobile-nav .ms-logo{
+    height: 11vw;
+    width: 23vw;
+    margin: 1.4vw 3vw;
+}
+
+  .hero-content {
+    height: 100vh;
+    padding: 22rem 0rem 0 5.5vw;
+  }
+
+  .hero-content .hero-left h1 {
+    font-size: 6.5vw;
+    line-height: 6.5vw;
+    margin-bottom: 1rem;
+  }
+  .hero-content .hero-left p {
+    font-size: 1rem;
+  }
+
+  .hero-content-btn {
+    font-size: 1rem;
+    padding: 0.8em;
+  }
+}
 
 /* Mobile */
-@media (max-width: 480px) {}
+@media (max-width: 480px) {
+
+  .hero-content{
+    padding-bottom: 40vw;
+  }
+
+  .hero-content .hero-left h1{
+    font-size: 7vw;
+    line-height: 7vw;
+  }
+  .hero-content .hero-left p {
+    font-size: 3.5vw;
+  }
+
+  .hero-content-btn {
+    font-size: 0.8rem;
+    margin-left: 6vw;
+  }
+  
+}
 
 /* Small mobile */
-@media (max-width: 375px) {}
+@media (max-width: 375px) {
+ 
+  
+}
 
 
 
