@@ -90,6 +90,7 @@ window.addEventListener('scroll', () => {
 
 const home = document.querySelector('.home');
 
+
 ScrollTrigger.create({
   trigger: home,
   start: 'top top',
@@ -112,7 +113,12 @@ gsap.to(home, {
 });
 
 
-
+gsap.to('.dl-simbol',{
+    rotate: 45,
+    repeat: -1,
+    yoyo: true,
+    duration:2
+})
 
 
 
