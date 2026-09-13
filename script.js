@@ -1,3 +1,32 @@
+// smooth scroll------------------lenis--------------------------------------
+
+gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(SplitText);
+
+const lenis = new Lenis({
+  smoothWheel: true,
+  lerp:0.05,
+});
+
+lenis.on("scroll", ScrollTrigger.update);
+
+gsap.ticker.add((time) => {
+  lenis.raf(time * 1000);
+});
+
+gsap.ticker.lagSmoothing(0);
+
+
+
+
+
+
+
+
+
+
+
+
 // Navbar links use Lenis when available and keep the current section visible.
 const navlinks = document.querySelectorAll('.nav-link');
 
@@ -441,3 +470,13 @@ gsap.to('.dl-simbol',{
   place();
   requestAnimationFrame(paint);
 })();
+
+
+
+
+
+
+
+
+
+// animations--------------------------------------------------------------------------------------
